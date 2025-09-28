@@ -31,9 +31,9 @@ const Testimonial = () => {
                 <h2 className='text-slate-700 text-[42px] font-semibold'>Loved by Creators</h2>
                 <p className='text-gray-500 max-w-lg mx-auto'>Don't just take our word for it. Here's what our users are saying.</p>
             </div>
-            <div className='flex flex-wrap mt-10 justify-center'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10'>
                 {dummyTestimonialData.map((testimonial, index) => (
-                    <div key={index} className='p-8 m-4 max-w-xs rounded-lg bg-[#FDFDFE] shadow-lg border border-gray-100 hover:-translate-y-1 transition duration-300 cursor-pointer'>
+                    <div key={index} className='p-8 rounded-lg bg-[#FDFDFE] shadow-lg border border-gray-100 hover:-translate-y-1 transition-transform duration-300 cursor-pointer'>
                         <div className="flex items-center gap-1">
                             {Array(5).fill(0).map((_, index)=>(<img key={index} src={index < testimonial.rating ? assets.star_icon : assets.star_dull_icon} className="w-4 h-4" alt="star"/>))}
                         </div>
