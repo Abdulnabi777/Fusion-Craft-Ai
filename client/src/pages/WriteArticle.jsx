@@ -39,9 +39,8 @@ const WriteArticle = () => {
     } catch (error){
         toast.error(error.message)
 
-    } finally {
-      setLoading(false)
     }
+      setLoading(false)
    }
   return (
     <div className='h-full overflow-y-auto p-6 flex justify-center items-start gap-4 text-slate-300'>
@@ -83,12 +82,11 @@ const WriteArticle = () => {
 
           {!content ? (
           <div className='flex-1 flex justify-center items-center'>
-            {loading ? <div className="w-8 h-8 border-4 border-purple-500 border-t-transparent rounded-full animate-spin" /> : content ? <div className='text-sm text-slate-300'>{content}</div> : <div className='text-sm flex flex-col items-center gap-5 text-slate-500'>
-              <Edit className='w-9 h-9'/>
-              <p>
+            <div className='text-sm flex flex-col items-center gap-5 text-slate-500'>
+               <p>
                 Enter a topic and click on "Generate Article" to create a unique article
               </p>
-            </div>}
+            </div>
           </div>
           ): (
             <div className='mt-3 h-full overflow-y-scroll text-sm text-slate-600'>
