@@ -133,7 +133,7 @@ export const  removeImageBackground = async (req, res) => {
     try {
         const { userId } = req.auth;
         const plan = req.plan;
-        const {image} = req.file;
+        const image = req.file;
  
         if (plan !== "premium" ) {
             return res.json({ success: false, message: "This feature is only available for premium users." })
