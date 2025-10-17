@@ -56,6 +56,7 @@ const Community = () => {
         });
       if (data.success) {
         toast.success(data.message);
+        await fetchCreations();
       } else {
         toast.error(data.message);
         setCreations(originalCreations);
@@ -83,8 +84,8 @@ const Community = () => {
               <div className='absolute inset-0 flex flex-col justify-end p-4 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-white rounded-lg'>
                 <p className='text-sm font-medium leading-snug'>{creation.prompt}</p>
                 <div className='flex gap-1 items-center '>
-                  <p>{creation.likes.length}</p>
-                  <Heart onClick={()=> imageLikeToggle(creation.id)} className={`w-5 h-5 cursor-pointer transition-transform hover:scale-110 ${creation.likes.includes(user.id) ? 'fill-red-500 text-red-500' : 'text-white'}`}/>
+                  {/* <p>{creation.likes.length}</p> */}
+                  {/* <Heart onClick={()=> imageLikeToggle(creation.id)} className={`w-5 h-5 cursor-pointer transition-transform hover:scale-110 ${creation.likes.includes(user.id) ? 'fill-red-500 text-red-500' : 'text-white'}`}/> */}
                  </div>
               </div>
             </div>
