@@ -163,7 +163,7 @@ export const  removeImageObject = async (req, res) => {
         const { userId } = req.auth;
         const {  object } = req.body;
         const plan = req.plan;
-        const {image} = req.file;
+        const image = req.file;
  
         if (plan !== "premium" ) {
             return res.json({ success: false, message: "This feature is only available for premium users." })
@@ -171,9 +171,9 @@ export const  removeImageObject = async (req, res) => {
 
         const {public_id} = await cloudinary.uploader.upload(image.path)
 
-        const {imageUrl} =cloudinary.url(public_id,{
+        const imageUrl = cloudinary.url(public_id,{
             transformation : [{effect: `gen_remove:${object}`}],
-            resouce_type: 'image'
+            resource_type: 'image'
         } )
  
  

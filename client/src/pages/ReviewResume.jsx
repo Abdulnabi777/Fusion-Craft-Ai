@@ -1,12 +1,45 @@
 import { File, Files, FileText, Sparkles } from 'lucide-react'
 import React, { useState } from 'react'
+import axios from 'axios'
+import { useAuth } from '@clerk/clerk-react';
+import toast, {Toaster} from 'react-hot-toast';
+import Markdown from 'react-markdown';
+
+
+axios.defaults.baseURL = import.meta.env.VITE_BASE_URL;
 
 const ReviewResume = () => {
      const [input, setInput] = useState('')
+           const [loading, setLoading] = useState(false)
+          const [content, setContent] = useState('')
+          const {getToken} = useAuth()
+     
  
      const onSubmitHandler = async(e) => {
       e.preventDefault();
-     }
+  try {
+        setLoading(true)
+
+        const formData = new FormData()
+        formData.append('resume', input)
+         const {data} = await axios.post('/api/ai/resume-review', formData,
+          {
+            headers: {
+              Authorization: `Bearer ${await getToken()}`}
+          }
+        )
+      if(data.success){
+        setContent(data.content)
+      }else{
+        toast.error(data.message)
+      }
+    } catch (error){
+        toast.error(error.message)
+
+    }
+      setLoading(false)
+   }
+
 
   return (
  <div className='h-full overflow-y-auto p-6 flex justify-center items-start gap-4 text-slate-300'>
@@ -23,8 +56,10 @@ const ReviewResume = () => {
         Support PDF format only
         </p>
 
-         <button className='w-full flex justify-center items-center gap-2 bg-gradient-to-r from-green-600 to-teal-600 text-white px-4 py-2.5 mt-6 text-sm rounded-lg cursor-pointer hover:opacity-90 transition-opacity'>
-          <FileText className='w-5'/>
+        <button disabled={loading} className='w-full flex justify-center items-center gap-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white px-4 py-2.5 mt-6 text-sm rounded-lg cursor-pointer hover:opacity-90 transition-opacity'>
+                  {
+            loading ? <span className='w-4 h-4 my-1 rounded-full border-2 border-t-transparent animate-spin'></span>:   <FileText className='w-5'/>
+          }             
           Resume Review
         </button>
       </form>
@@ -34,7 +69,9 @@ const ReviewResume = () => {
             <FileText className='w-5 h-5 text-green-400'/>
             <h1 className='text-xl font-semibold text-slate-200'>Analysis Results</h1>
           </div>
-          <div className='flex-1 flex justify-center items-center'>
+          {
+            !content ? (
+                        <div className='flex-1 flex justify-center items-center'>
             <div className='text-sm flex flex-col items-center gap-5 text-slate-500'>
               <FileText className='w-9 h-9'/>
               <p>
@@ -42,6 +79,17 @@ const ReviewResume = () => {
                </p>
             </div>
           </div>
+            ) : (
+            <div className='mt-3 h-full overflow-y-scroll text-sm text-slate-600'>
+               <div className='reset-tw'>
+                 <Markdown>
+                   {content }
+                 </Markdown>
+                </div>               
+              </div>
+            )
+          }
+ 
       </div>
     </div>
   )

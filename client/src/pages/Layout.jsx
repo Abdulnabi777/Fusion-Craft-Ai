@@ -5,6 +5,8 @@ import { Menu, X } from 'lucide-react'
 import Sidebar from '../components/Sidebar'
 import { SignIn, useUser } from '@clerk/clerk-react'
 
+import { Toaster } from 'react-hot-toast'
+
 const Layout = () => {
   const navigate = useNavigate()
   const[sidebar, setSidebar]= useState(false)
@@ -20,6 +22,7 @@ const Layout = () => {
 
   return (
     <div className='flex flex-col items-start justify-start h-screen bg-slate-900 text-white'>
+      <Toaster/>
         <nav className='w-full px-8 min-h-14 flex items-center justify-between bg-slate-900/50 backdrop-blur-lg border-b border-slate-700/80 z-10'>
           <img src={assets.logo} alt="logo" onClick={() => navigate('/')}  className="w-32 sm:w-44 cursor-pointer drop-shadow-[0_0_8px_rgba(147,51,234,0.6)]"/>
           {
