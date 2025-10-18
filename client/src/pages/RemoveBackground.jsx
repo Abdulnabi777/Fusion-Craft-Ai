@@ -1,6 +1,6 @@
 import { useAuth } from '@clerk/clerk-react';
 import axios from 'axios';
-import { Eraser, Sparkles } from 'lucide-react'
+import { Download, Eraser, Sparkles } from 'lucide-react'
 import React, { useState } from 'react'
 import toast, { Toaster } from 'react-hot-toast';
  
@@ -40,6 +40,14 @@ const RemoveBackground = () => {
     }
       setLoading(false)
    }
+   const handleDownload = () => {
+    const link = document.createElement('a');
+    link.href = content;
+    link.download = 'generated-image.png';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
  <div className='h-full overflow-y-auto p-6 flex justify-center items-start gap-4 text-slate-300'>
@@ -64,9 +72,16 @@ const RemoveBackground = () => {
       </form>
       {/* Right Column */}
       <div className='w-full max-w-lg p-6 bg-slate-800/50 rounded-xl flex flex-col border border-slate-700 min-h-96'>
-          <div className='flex items-center gap-3'>
-            <Eraser className='w-5 h-5 text-orange-400'/>
-            <h1 className='text-xl font-semibold text-slate-200'>Processed image</h1>
+          <div className='flex items-center justify-between'>
+            <div className='flex items-center gap-3'>
+              <Eraser className='w-5 h-5 text-orange-400'/>
+              <h1 className='text-xl font-semibold text-slate-200'>Processed image</h1>
+            </div>
+            {content && (
+                <button onClick={handleDownload} className='p-1.5 rounded-md hover:bg-slate-700'>
+                  <Download className='w-5 h-5' />
+                </button>
+            )}
           </div>
           {
             !content ? (

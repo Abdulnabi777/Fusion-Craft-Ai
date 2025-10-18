@@ -2,9 +2,10 @@ import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Home from './pages/Home.jsx'
 import Layout from './pages/Layout.jsx'
-import BlogTitles from './pages/BlogTitles'
+import EmailWriter from './pages/EmailWriter'
 import Dashboard from './pages/Dashboard.jsx'
 import WriteArticle from './pages/WriteArticle.jsx'
+import RemoveBackground from './pages/RemoveBackground.jsx'
 import Community from './pages/Community.jsx' 
 import ReviewResume from './pages/ReviewResume.jsx'
 import RemoveObject from './pages/RemoveObject.jsx'
@@ -27,11 +28,11 @@ const App = () => {
         <Route path="/" element={<Home/>} />
         <Route path='/ai' element={<Layout />}>
         <Route index element={<Dashboard />} />
-        <Route path='write-article' element={<WriteArticle />} />
-        <Route path='blog-titles' element={<BlogTitles />} />
+        <Route path='content-craft' element={<WriteArticle />} />
+        <Route path='email-craft' element={<EmailWriter />} />
         <Route path='community' element={<Community />} />
         <Route path='remove-background' element={<RemoveBackground />} />
-        <Route path='review-resume' element={< ReviewResume />} />
+        <Route path='docu-analyzer' element={< ReviewResume />} />
         <Route path='remove-object' element={<  RemoveObject />} />
         <Route path='generate-images' element={<  GenerateImages />} />
         </Route>
