@@ -7,7 +7,7 @@ import Dashboard from './pages/Dashboard.jsx'
 import WriteArticle from './pages/WriteArticle.jsx'
 import RemoveBackground from './pages/RemoveBackground.jsx'
 import Community from './pages/Community.jsx' 
-import ReviewResume from './pages/ReviewResume.jsx'
+import DockAnalzer from './pages/DocAnalzer.jsx'
 import RemoveObject from './pages/RemoveObject.jsx'
 import GenerateImages from './pages/GenerateImages.jsx'
 import { useAuth } from '@clerk/clerk-react'
@@ -32,7 +32,7 @@ const App = () => {
         <Route path='email-craft' element={<EmailWriter />} />
         <Route path='community' element={<Community />} />
         <Route path='remove-background' element={<RemoveBackground />} />
-        <Route path='docu-analyzer' element={< ReviewResume />} />
+        <Route path='docu-analyzer' element={< DockAnalzer />} />
         <Route path='remove-object' element={<  RemoveObject />} />
         <Route path='generate-images' element={<  GenerateImages />} />
         </Route>

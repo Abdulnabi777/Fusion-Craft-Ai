@@ -7,7 +7,7 @@ import Markdown from 'react-markdown';
 
 axios.defaults.baseURL = import.meta.env.VITE_BASE_URL;
 
-const ReviewResume = () => {
+const DockAnalzer = () => {
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)
   const [content, setContent] = useState('')
@@ -266,4 +266,4 @@ const ReviewResume = () => {
   )
 }
 
-export default ReviewResume
+export default DockAnalzer

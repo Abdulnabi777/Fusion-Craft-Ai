@@ -10,7 +10,7 @@ const navItems = [
   {to: '/ai/generate-images' , label: 'Prompt2Image', Icon: Image}, 
   {to: '/ai/remove-background' , label: 'MagicCut BG', Icon: Eraser}, 
   {to: '/ai/remove-object' , label: 'ObjectRemove AI', Icon: Scissors}, 
-  {to: '/ai/doc-analyzer' , label: 'DocAnalyzer', Icon: FileText}, 
+  {to: '/ai/docu-analyzer' , label: 'DocAnalyzer', Icon: FileText}, 
   {to: '/ai/community' , label: 'Community', Icon: User}, 
 ]
   const Sidebar = ({sidebar, setSidebar}) => {
